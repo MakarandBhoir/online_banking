@@ -8,13 +8,13 @@ public class EBankUsers {
 	
 	@Id
 	@Column(name="User_Id")
-	String user_Id;
+	private String user_Id;
 	
 	@Column(name="Password")
-	String password;
+	private String password;
 	
 	@Column(name="Transaction_Pin")
-	int transaction_pin;
+	private int transaction_pin;
 	
 	
 

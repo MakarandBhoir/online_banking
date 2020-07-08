@@ -1,5 +1,7 @@
 package com.bank.entity;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,34 +10,34 @@ public class Transactions {
 	
 	@Id
 	@Column(name="Transaction_Id")
-	int transaction_Id;
+	private int transaction_Id;
 	
 	@Column(name="From_AC")
-	int from_AC;
+	private int from_AC;
 	
 	@Column(name="To_AC")
-	int to_AC;
+	private int to_AC;
 	
 	@Column(name= "Timestamp")
-	String timestamp;
+	private Date timestamp;
 	
 	@Column(name="Amount")
-	int amount;
+	private int amount;
 	
 	@Column(name="Mode")
-	String mode;
+	private String mode;
 	
 	@Column(name="Remark")
-	String remark;
+	private String remark;
 	
 	@Column(name="Status")
-	String status;
+	private String status;
 	
 	@Column(name="User_Id")
-	String user_Id;
+	private String user_Id;
 	
 	@Column(name="Reference_Id")
-	String reference_Id;
+	private String reference_Id;
 	
 	
 
@@ -75,13 +77,13 @@ public class Transactions {
 
 
 
-	public String getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
 
 
 
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 

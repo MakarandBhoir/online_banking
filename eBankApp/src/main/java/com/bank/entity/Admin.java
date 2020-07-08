@@ -8,9 +8,9 @@ public class Admin {
 
 	@Id
 	@Column(name ="Admin_Id")
-	String admin_Id;
+	private String admin_Id;
 	@Column(name="Password")
-	String password;
+	private String password;
 	
 	
 	public String getAdmin_Id() {

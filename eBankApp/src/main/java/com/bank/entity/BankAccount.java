@@ -1,5 +1,7 @@
 package com.bank.entity;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,35 +10,35 @@ public class BankAccount {
 
 	@Id
 	@Column(name="Account_No")
-	int account_No;
+	private int account_No;
 	
 	
 	@Column(name="Customer_Id")
-	int customer_Id;
+	private int customer_Id;
 	
 	@Column(name="Type")
-	String type;
+	private String type;
 	
 	@Column(name="AC_Creation_Date")
-	String AC_Date;
+	private Date AC_Date;
 	
 	@Column(name="Balance")
-	int balance;
+	private int balance;
 	
 	@Column(name="Registered_Mobile")
-	String Mobile;
+	private String Mobile;
 	
 	@Column(name="Registered_Email")
-	String email;
+	private String email;
 	
 	@Column(name="IFSC")
-	String ifsc;
+	private String ifsc;
 	
 	@Column(name="Branch")
-	String branch;
+	private String branch;
 	
 	@Column(name="User_Id")
-	String user_Id;
+	private String user_Id;
 	
 	
 
@@ -76,13 +78,13 @@ public class BankAccount {
 
 
 
-	public String getAC_Date() {
+	public Date getAC_Date() {
 		return AC_Date;
 	}
 
 
 
-	public void setAC_Date(String aC_Date) {
+	public void setAC_Date(Date aC_Date) {
 		AC_Date = aC_Date;
 	}
 

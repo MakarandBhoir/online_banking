@@ -1,65 +1,67 @@
 package com.bank.entity;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "accountrequest")
+@Table(name = "account_request")
 public class AccountRequest {
 
 	@Id
 	@Column(name="Application_Id")
-	int application_Id;
+	private int application_Id;
 	
 	@Column(name="First_Name")
-	String first_Name;
+	private String first_Name;
 	
 	@Column(name="Middle_Name")
-	String middle_Name;
+	private String middle_Name;
 	
 	@Column(name="Last_Name")
-	String last_Name;
+	private String last_Name;
 	
 	@Column(name="Father_Name")
-	String father_Name;
+	private String father_Name;
 	
 	@Column(name="DOB")
-	String dob;
+	private Date dob;
 	
 	@Column(name="Email")
-	String email;
+	private String email;
 	
 	@Column(name="Phone")
-	String phone;
+	private String phone;
 	
 	@Column(name="Occupation_Type")
-	String occupation_Type;
+	private String occupation_Type;
 	
 	@Column(name="Income_Source")
-	String income_Source;
+	private String income_Source;
 	
 	@Column(name="Gross_Income")
-	int gross_Income;
+	private int gross_Income;
 	
 	@Column(name="Adhar_Card")
-	String adhar_No;
+	private String adhar_No;
 	
 	@Column(name="Pan_Card")
-	String pan_No;
+	private String pan_No;
 	
 	@Column(name="Permanant_Address")
-	String permanant_Address;
+	private String permanant_Address;
 	
 	@Column(name="Residential_Address")
-	String residential_Address;
+	private String residential_Address;
 	
 	@Column(name="Apply_date")
-	String apply_Date;
+	private Date apply_Date;
 	
 	@Column(name="Remark")
-	String remark;
+	private String remark;
 	
 	@Column(name="Status")
-	String status;
+	private String status;
 	
 	
 
@@ -123,13 +125,13 @@ public class AccountRequest {
 
 
 
-	public String getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
 
 
-	public void setDob(String dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
@@ -243,13 +245,13 @@ public class AccountRequest {
 
 
 
-	public String getApply_Date() {
+	public Date getApply_Date() {
 		return apply_Date;
 	}
 
 
 
-	public void setApply_Date(String apply_Date) {
+	public void setApply_Date(Date apply_Date) {
 		this.apply_Date = apply_Date;
 	}
 

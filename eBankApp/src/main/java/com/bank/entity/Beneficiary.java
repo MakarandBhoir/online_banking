@@ -8,30 +8,30 @@ public class Beneficiary {
 
 	@Id
 	@Column(name="User_Id")
-	String user_id;
+	private String userId;
 	
 	@Column(name="PayeeAC_No")
-	int payeeACno;
+	private int payeeACno;
 	
 	@Column(name="Bank_Name")
-	String bankName;
+	private String bankName;
 	
 	@Column(name="IFSC")
-	String ifsc;
+	private String ifsc;
 	
 	@Column(name="Nick_Name")
-	String nickName;
+	private String nickName;
 	
 	
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
 
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 
@@ -86,7 +86,7 @@ public class Beneficiary {
 
 	@Override
 	public String toString() {
-		return "Beneficiary [user_id=" + user_id + ", payeeACno=" + payeeACno + ", bankName=" + bankName + ", ifsc="
+		return "Beneficiary [user_id=" + userId + ", payeeACno=" + payeeACno + ", bankName=" + bankName + ", ifsc="
 				+ ifsc + ", nickName=" + nickName + "]";
 	}
 	
