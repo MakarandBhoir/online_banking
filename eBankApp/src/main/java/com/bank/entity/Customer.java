@@ -9,8 +9,10 @@ import javax.persistence.*;
 public class Customer {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CustId_seq")
+	@SequenceGenerator(name="CustId_seq",sequenceName="CustId_seq",allocationSize=1)
 	@Column(name="Customer_Id")
-	private int customer_Id;
+	private long customer_Id;
 	
 	@Column(name="First_Name")
 	private String first_Name;
@@ -40,7 +42,7 @@ public class Customer {
 	private String income_Source;
 	
 	@Column(name="Gross_Income")
-	private int gross_Income;
+	private long gross_Income;
 	
 	@Column(name="Adhar_Card")
 	private String adhar_No;
@@ -57,15 +59,39 @@ public class Customer {
 	@Column(name="Apply_date")
 	private Date apply_Date;
 
+	public Customer() {}
 	
-	
-	public int getCustomer_Id() {
+	public Customer(long customer_Id, String first_Name, String middle_Name, String last_Name, String father_Name,
+			Date dob, String email, String phone, String occupation_Type, String income_Source, long gross_Income,
+			String adhar_No, String pan_No, String permanant_Address, String residential_Address, Date apply_Date) {
+		super();
+		this.customer_Id = customer_Id;
+		this.first_Name = first_Name;
+		this.middle_Name = middle_Name;
+		this.last_Name = last_Name;
+		this.father_Name = father_Name;
+		this.dob = dob;
+		this.email = email;
+		this.phone = phone;
+		this.occupation_Type = occupation_Type;
+		this.income_Source = income_Source;
+		this.gross_Income = gross_Income;
+		this.adhar_No = adhar_No;
+		this.pan_No = pan_No;
+		this.permanant_Address = permanant_Address;
+		this.residential_Address = residential_Address;
+		this.apply_Date = apply_Date;
+	}
+
+
+
+	public long getCustomer_Id() {
 		return customer_Id;
 	}
 
 
 
-	public void setCustomer_Id(int customer_Id) {
+	public void setCustomer_Id(long customer_Id) {
 		this.customer_Id = customer_Id;
 	}
 
@@ -179,13 +205,13 @@ public class Customer {
 
 
 
-	public int getGross_Income() {
+	public long getGross_Income() {
 		return gross_Income;
 	}
 
 
 
-	public void setGross_Income(int gross_Income) {
+	public void setGross_Income(long gross_Income) {
 		this.gross_Income = gross_Income;
 	}
 

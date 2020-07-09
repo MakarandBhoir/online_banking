@@ -17,6 +17,15 @@ public class EBankUsers {
 	private int transaction_pin;
 	
 	
+	public EBankUsers() {}
+	public EBankUsers(String user_Id, String password, int transaction_pin) {
+		super();
+		this.user_Id = user_Id;
+		this.password = password;
+		this.transaction_pin = transaction_pin;
+	}
+
+
 
 	public String getUser_Id() {
 		return user_Id;

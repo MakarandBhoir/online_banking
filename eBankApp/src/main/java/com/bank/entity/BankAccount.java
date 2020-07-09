@@ -9,12 +9,14 @@ import javax.persistence.*;
 public class BankAccount {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="Account_seq")
+	@SequenceGenerator(name="Account_seq",sequenceName="Account_seq",allocationSize=1)
 	@Column(name="Account_No")
-	private int account_No;
+	private long account_No;
 	
 	
 	@Column(name="Customer_Id")
-	private int customer_Id;
+	private long customer_Id;
 	
 	@Column(name="Type")
 	private String type;
@@ -42,25 +44,43 @@ public class BankAccount {
 	
 	
 
-	public int getAccount_No() {
+	public BankAccount() {}
+	public BankAccount(long account_No, long customer_Id, String type, Date aC_Date, int balance, String mobile,
+			String email, String ifsc, String branch, String user_Id) {
+		super();
+		this.account_No = account_No;
+		this.customer_Id = customer_Id;
+		this.type = type;
+		AC_Date = aC_Date;
+		this.balance = balance;
+		Mobile = mobile;
+		this.email = email;
+		this.ifsc = ifsc;
+		this.branch = branch;
+		this.user_Id = user_Id;
+	}
+
+
+
+	public long getAccount_No() {
 		return account_No;
 	}
 
 
 
-	public void setAccount_No(int account_No) {
+	public void setAccount_No(long account_No) {
 		this.account_No = account_No;
 	}
 
 
 
-	public int getCustomer_Id() {
+	public long getCustomer_Id() {
 		return customer_Id;
 	}
 
 
 
-	public void setCustomer_Id(int customer_Id) {
+	public void setCustomer_Id(long customer_Id) {
 		this.customer_Id = customer_Id;
 	}
 

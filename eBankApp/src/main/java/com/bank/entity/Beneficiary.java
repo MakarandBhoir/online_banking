@@ -6,12 +6,12 @@ import javax.persistence.*;
 @Table(name = "beneficiary")
 public class Beneficiary {
 
-	@Id
+	
 	@Column(name="User_Id")
 	private String userId;
 	
 	@Column(name="PayeeAC_No")
-	private int payeeACno;
+	private long payeeACno;
 	
 	@Column(name="Bank_Name")
 	private String bankName;
@@ -23,6 +23,18 @@ public class Beneficiary {
 	private String nickName;
 	
 	
+	public Beneficiary() {}
+
+	public Beneficiary(String userId, long payeeACno, String bankName, String ifsc, String nickName) {
+		super();
+		this.userId = userId;
+		this.payeeACno = payeeACno;
+		this.bankName = bankName;
+		this.ifsc = ifsc;
+		this.nickName = nickName;
+	}
+
+
 
 	public String getUserId() {
 		return userId;
@@ -36,13 +48,13 @@ public class Beneficiary {
 
 
 
-	public int getPayeeACno() {
+	public long getPayeeACno() {
 		return payeeACno;
 	}
 
 
 
-	public void setPayeeACno(int payeeACno) {
+	public void setPayeeACno(long payeeACno) {
 		this.payeeACno = payeeACno;
 	}
 

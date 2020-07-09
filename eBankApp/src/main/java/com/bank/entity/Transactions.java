@@ -9,14 +9,16 @@ import javax.persistence.*;
 public class Transactions {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TransId_seq")
+	@SequenceGenerator(name="TransId_seq",sequenceName="TransId_seq",allocationSize=1)
 	@Column(name="Transaction_Id")
-	private int transaction_Id;
+	private long transaction_Id;
 	
 	@Column(name="From_AC")
-	private int from_AC;
+	private long from_AC;
 	
 	@Column(name="To_AC")
-	private int to_AC;
+	private long to_AC;
 	
 	@Column(name= "Timestamp")
 	private Date timestamp;
@@ -39,39 +41,56 @@ public class Transactions {
 	@Column(name="Reference_Id")
 	private String reference_Id;
 	
-	
+	public Transactions() {}
 
-	public int getTransaction_Id() {
+	public Transactions(long transaction_Id, long from_AC, long to_AC, Date timestamp, int amount, String mode,
+			String remark, String status, String user_Id, String reference_Id) {
+		super();
+		this.transaction_Id = transaction_Id;
+		this.from_AC = from_AC;
+		this.to_AC = to_AC;
+		this.timestamp = timestamp;
+		this.amount = amount;
+		this.mode = mode;
+		this.remark = remark;
+		this.status = status;
+		this.user_Id = user_Id;
+		this.reference_Id = reference_Id;
+	}
+
+
+
+	public long getTransaction_Id() {
 		return transaction_Id;
 	}
 
 
 
-	public void setTransaction_Id(int transaction_Id) {
+	public void setTransaction_Id(long transaction_Id) {
 		this.transaction_Id = transaction_Id;
 	}
 
 
 
-	public int getFrom_AC() {
+	public long getFrom_AC() {
 		return from_AC;
 	}
 
 
 
-	public void setFrom_AC(int from_AC) {
+	public void setFrom_AC(long from_AC) {
 		this.from_AC = from_AC;
 	}
 
 
 
-	public int getTo_AC() {
+	public long getTo_AC() {
 		return to_AC;
 	}
 
 
 
-	public void setTo_AC(int to_AC) {
+	public void setTo_AC(long to_AC) {
 		this.to_AC = to_AC;
 	}
 

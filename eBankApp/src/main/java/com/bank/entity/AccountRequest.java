@@ -9,8 +9,10 @@ import javax.persistence.*;
 public class AccountRequest {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="AppId_seq")
+	@SequenceGenerator(name="AppId_seq",sequenceName="AppId_seq",allocationSize=1)
 	@Column(name="Application_Id")
-	private int application_Id;
+	private long application_Id;
 	
 	@Column(name="First_Name")
 	private String first_Name;
@@ -64,14 +66,43 @@ public class AccountRequest {
 	private String status;
 	
 	
+	public AccountRequest() {}	
 
-	public int getApplication_Id() {
+
+	public AccountRequest(long application_Id, String first_Name, String middle_Name, String last_Name,
+			String father_Name, Date dob, String email, String phone, String occupation_Type, String income_Source,
+			int gross_Income, String adhar_No, String pan_No, String permanant_Address, String residential_Address,
+			Date apply_Date, String remark, String status) {
+		super();
+		this.application_Id = application_Id;
+		this.first_Name = first_Name;
+		this.middle_Name = middle_Name;
+		this.last_Name = last_Name;
+		this.father_Name = father_Name;
+		this.dob = dob;
+		this.email = email;
+		this.phone = phone;
+		this.occupation_Type = occupation_Type;
+		this.income_Source = income_Source;
+		this.gross_Income = gross_Income;
+		this.adhar_No = adhar_No;
+		this.pan_No = pan_No;
+		this.permanant_Address = permanant_Address;
+		this.residential_Address = residential_Address;
+		this.apply_Date = apply_Date;
+		this.remark = remark;
+		this.status = status;
+	}
+
+
+
+	public long getApplication_Id() {
 		return application_Id;
 	}
 
 
 
-	public void setApplication_Id(int application_Id) {
+	public void setApplication_Id(long application_Id) {
 		this.application_Id = application_Id;
 	}
 

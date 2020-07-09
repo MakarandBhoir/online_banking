@@ -12,7 +12,14 @@ public class Admin {
 	@Column(name="Password")
 	private String password;
 	
+	public Admin() {}
 	
+	public Admin(String admin_Id, String password) {
+		super();
+		this.admin_Id = admin_Id;
+		this.password = password;
+	}
+
 	public String getAdmin_Id() {
 		return admin_Id;
 	}
