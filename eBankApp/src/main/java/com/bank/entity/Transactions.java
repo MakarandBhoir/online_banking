@@ -35,12 +35,26 @@ public class Transactions {
 	@Column(name="Status")
 	private String status;
 	
-	@Column(name="User_Id")
-	private String user_Id;
+	
+	 // @Column(name="User_Id") 
+	 // private String user_Id;
+	 
 	
 	@Column(name="Reference_Id")
 	private String reference_Id;
 	
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name = "User_Id")
+	private EBankUsers eBankUser;
+	
+	public EBankUsers getEBankUsers() {
+		return eBankUser;
+	}
+
+	public void setEBankUsers(EBankUsers eBankUser1) {
+		this.eBankUser = eBankUser1;
+	}
+
 	public Transactions() {}
 
 	public Transactions(long transaction_Id, long from_AC, long to_AC, Date timestamp, int amount, String mode,
@@ -54,7 +68,7 @@ public class Transactions {
 		this.mode = mode;
 		this.remark = remark;
 		this.status = status;
-		this.user_Id = user_Id;
+		//this.user_Id = user_Id;
 		this.reference_Id = reference_Id;
 	}
 
@@ -155,19 +169,6 @@ public class Transactions {
 	}
 
 
-
-	public String getUser_Id() {
-		return user_Id;
-	}
-
-
-
-	public void setUser_Id(String user_Id) {
-		this.user_Id = user_Id;
-	}
-
-
-
 	public String getReference_Id() {
 		return reference_Id;
 	}
@@ -184,7 +185,7 @@ public class Transactions {
 	public String toString() {
 		return "Transactions [transaction_Id=" + transaction_Id + ", from_AC=" + from_AC + ", to_AC=" + to_AC
 				+ ", timestamp=" + timestamp + ", amount=" + amount + ", mode=" + mode + ", remark=" + remark
-				+ ", status=" + status + ", user_Id=" + user_Id + ", reference_Id=" + reference_Id + "]";
+				+ ", status=" + status + ", user_Id=" + eBankUser.getUser_Id() + ", reference_Id=" + reference_Id + "]";
 	}
 	
 	

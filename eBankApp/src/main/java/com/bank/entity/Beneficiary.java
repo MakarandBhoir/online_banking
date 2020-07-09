@@ -7,8 +7,10 @@ import javax.persistence.*;
 public class Beneficiary {
 
 	
-	@Column(name="User_Id")
-	private String userId;
+	
+	//@Column(name="User_Id") 
+	//private String userId;
+	
 	
 	@Column(name="PayeeAC_No")
 	private long payeeACno;
@@ -22,28 +24,27 @@ public class Beneficiary {
 	@Column(name="Nick_Name")
 	private String nickName;
 	
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name = "User_Id")
+	private EBankUsers eBankUser;
+	public EBankUsers getEBankUsers() {
+		return eBankUser;
+	}
+
+	public void setEBankUsers(EBankUsers eBankUser1) {
+		this.eBankUser = eBankUser1;
+	}
+
 	
 	public Beneficiary() {}
 
 	public Beneficiary(String userId, long payeeACno, String bankName, String ifsc, String nickName) {
 		super();
-		this.userId = userId;
+		//this.userId = userId;
 		this.payeeACno = payeeACno;
 		this.bankName = bankName;
 		this.ifsc = ifsc;
 		this.nickName = nickName;
-	}
-
-
-
-	public String getUserId() {
-		return userId;
-	}
-
-
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 
@@ -98,7 +99,7 @@ public class Beneficiary {
 
 	@Override
 	public String toString() {
-		return "Beneficiary [user_id=" + userId + ", payeeACno=" + payeeACno + ", bankName=" + bankName + ", ifsc="
+		return "Beneficiary [user_id=" + eBankUser.getUser_Id() + ", payeeACno=" + payeeACno + ", bankName=" + bankName + ", ifsc="
 				+ ifsc + ", nickName=" + nickName + "]";
 	}
 	

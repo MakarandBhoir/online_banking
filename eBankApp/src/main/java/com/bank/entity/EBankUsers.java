@@ -16,6 +16,18 @@ public class EBankUsers {
 	@Column(name="Transaction_Pin")
 	private int transaction_pin;
 	
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name = "User_Id")
+	private BankAccount bankAccount;  
+	
+	public BankAccount getBankAccount() {
+		return bankAccount;
+	}
+	
+	public void setBankAccount(BankAccount bankAccount1) {
+		this.bankAccount = bankAccount1;
+	}
+	
 	
 	public EBankUsers() {}
 	public EBankUsers(String user_Id, String password, int transaction_pin) {
