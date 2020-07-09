@@ -8,6 +8,7 @@
 	<groupId>com.bank</groupId>
 	<artifactId>eBankApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 	<name>eBankApp</name>
 	<!-- FIXME change it to the project's website -->
