@@ -24,22 +24,22 @@ public class Admin {
 		return admin_Id;
 	}
 
-/*
+
 	public void setAdmin_Id(String admin_Id) {
 		this.admin_Id = admin_Id;
 	}
-*/
+
 
 	public String getPassword() {
 		return password;
 	}
 
 
-/*	public void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-*/
+
 	@Override
 	public String toString() {
 		return "Admin [admin_Id=" + admin_Id + ", password=" + password + "]";

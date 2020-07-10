@@ -1,6 +1,9 @@
 package com.bank.entity;
 
 import javax.persistence.*;
+import java.util.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "ebankusers")
@@ -16,18 +19,17 @@ public class EBankUsers {
 	@Column(name="Transaction_Pin")
 	private int transaction_pin;
 	
-	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinColumn(name = "User_Id")
-	private BankAccount bankAccount;  
-	
-	public BankAccount getBankAccount() {
-		return bankAccount;
-	}
-	
-	public void setBankAccount(BankAccount bankAccount1) {
-		this.bankAccount = bankAccount1;
-	}
-	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "User_Id",referencedColumnName = "User_Id")
+	@JsonManagedReference
+	private Set<BankAccount> bankAccounts;
+	public Set<BankAccount> getBankAccounts() {
+		  return bankAccounts;
+		 }
+
+		 public void setBankAccounts(Set<BankAccount> bankAccounts) {
+		  this.bankAccounts = bankAccounts;
+		 }
 	
 	public EBankUsers() {}
 	public EBankUsers(String user_Id, String password, int transaction_pin) {

@@ -42,6 +42,16 @@ public class BankAccount {
 	@Column(name="User_Id")
 	private String user_Id;
 	
+	/*@OneToOne(mappedBy = "bankAccounts", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	EBankUsers eBankUser;
+	public EBankUsers geteBankUser() {
+		  return eBankUser;
+		 }
+
+		 public void setUser(EBankUsers user) {
+		  this.eBankUser = user;
+		 } */
+	
 	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name = "Customer_Id")
 	private Customer customer;

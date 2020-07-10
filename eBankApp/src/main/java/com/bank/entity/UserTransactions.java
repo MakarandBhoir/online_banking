@@ -5,8 +5,8 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "transactions")
-public class Transactions {
+@Table(name = "usertransactions")
+public class UserTransactions {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TransId_seq")
@@ -55,9 +55,9 @@ public class Transactions {
 		this.eBankUser = eBankUser1;
 	}
 
-	public Transactions() {}
+	public UserTransactions() {}
 
-	public Transactions(long transaction_Id, long from_AC, long to_AC, Date timestamp, int amount, String mode,
+	public UserTransactions(long transaction_Id, long from_AC, long to_AC, Date timestamp, int amount, String mode,
 			String remark, String status, String user_Id, String reference_Id) {
 		super();
 		this.transaction_Id = transaction_Id;
