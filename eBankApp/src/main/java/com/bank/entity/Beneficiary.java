@@ -10,10 +10,10 @@ public class Beneficiary {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "bene_seq")
 	@SequenceGenerator(name="bene_seq",sequenceName="bene_seq",initialValue = 1,allocationSize=1)
 	@Column(name="B_Id") 
-	private String b_Id;
+	private int b_Id;
 	
-	//@Column(name="User_Id") 
-	//private String userId;
+	@Column(name="User_Id") 
+	private String user_Id;
 	
 	
 	@Column(name="PayeeAC_No")
@@ -28,30 +28,39 @@ public class Beneficiary {
 	@Column(name="Nick_Name")
 	private String nickName;
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	/*@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name = "User_Id")
 	private EBankUsers eBankUser;
-	public EBankUsers getEBankUsers() {
+	
+	public EBankUsers geteBankUser() {
 		return eBankUser;
 	}
 
-	public void setEBankUsers(EBankUsers eBankUser1) {
-		this.eBankUser = eBankUser1;
-	}
+	public void seteBankUser(EBankUsers eBankUser) {
+		this.eBankUser = eBankUser;
+	}*/
 
-	
 	public Beneficiary() {}
 
-	public Beneficiary(String userId, long payeeACno, String bankName, String ifsc, String nickName) {
+	public Beneficiary(int b_Id,String userId, long payeeACno, String bankName, String ifsc, String nickName,String user) {
 		super();
-		//this.userId = userId;
+		this.b_Id = b_Id;
 		this.payeeACno = payeeACno;
 		this.bankName = bankName;
 		this.ifsc = ifsc;
 		this.nickName = nickName;
+		this.user_Id=user;
 	}
 
 
+
+	public int getB_Id() {
+		return b_Id;
+	}
+
+	public void setB_Id(int b_Id) {
+		this.b_Id = b_Id;
+	}
 
 	public long getPayeeACno() {
 		return payeeACno;
@@ -101,9 +110,18 @@ public class Beneficiary {
 
 
 
+	
+	public String getUser_Id() {
+		return user_Id;
+	}
+
+	public void setUser_Id(String user_Id) {
+		this.user_Id = user_Id;
+	}
+
 	@Override
 	public String toString() {
-		return "Beneficiary [user_id=" + eBankUser.getUser_Id() + ", payeeACno=" + payeeACno + ", bankName=" + bankName + ", ifsc="
+		return "Beneficiary [b_Id="+b_Id+"user_id=" +user_Id+", payeeACno=" + payeeACno + ", bankName=" + bankName + ", ifsc="
 				+ ifsc + ", nickName=" + nickName + "]";
 	}
 	

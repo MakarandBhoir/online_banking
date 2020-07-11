@@ -4,7 +4,7 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
                       http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
   version="2.0">
-	<persistence-unit name="JPA-PU" transaction-type="JTA">
+	<persistence-unit name="JPA-PU">
 		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<properties>
@@ -16,7 +16,7 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-			
+		<!-- 	<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />  -->
 		</properties>
 	</persistence-unit>
 </persistence>
