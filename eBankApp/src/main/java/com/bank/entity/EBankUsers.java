@@ -17,7 +17,7 @@ public class EBankUsers {
 	private String password;
 	
 	@Column(name="Transaction_Pin")
-	private String transaction_pin;
+	private String t_Pin;
 	
 	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@JoinColumn(name = "User_Id",referencedColumnName = "User_Id")
@@ -45,19 +45,13 @@ public class EBankUsers {
 		this.beneficiary = beneficiary;
 	}*/
 	public EBankUsers() {}
-	public EBankUsers(String user_Id, String password, String transaction_pin) {
+	public EBankUsers(String user_Id, String password, String t_Pin) {
 		super();
 		this.user_Id = user_Id;
 		this.password = password;
-		this.transaction_pin = transaction_pin;
+		this.t_Pin = t_Pin;
 	}
-	public EBankUsers(String user_Id, String password) {
-		super();
-		this.user_Id = user_Id;
-		this.password = password;
-		//this.transaction_pin = transaction_pin;
-	}
-
+	
 
 
 	public String getUser_Id() {
@@ -84,21 +78,21 @@ public class EBankUsers {
 
 
 
-	public String getTransaction_pin() {
-		return transaction_pin;
+	public String getT_Pin() {
+		return t_Pin;
 	}
 
 
 
-	public void setTransaction_pin(String transaction_pin) {
-		this.transaction_pin = transaction_pin;
+	public void setT_Pin(String t_Pin) {
+		this.t_Pin = t_Pin;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "EBankUsers [user_Id=" + user_Id + ", password=" + password + ", transaction_pin=" + transaction_pin
+		return "EBankUsers [user_Id=" + user_Id + ", password=" + password + ", transaction_Pin=" + t_Pin
 				+ "]";
 	}
 	

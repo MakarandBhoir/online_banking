@@ -35,6 +35,7 @@ public class EBankUsersServiceImpl implements EBankUsersService{
 	@Override
 	public String registerUser(EBankUsers user1) {
 		String msg="";
+		
 		boolean success=userdao.registerUser(user1);
 		if(success==true)
 		{ 

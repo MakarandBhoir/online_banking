@@ -1,6 +1,8 @@
 package com.bank.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -15,8 +17,8 @@ public class BankAccount {
 	private long account_No;
 	
 	
-	//@Column(name="Customer_Id")
-	//private long customer_Id;
+	@Column(name="Customer_Id")
+	private long customer_Id;
 	
 	@Column(name="Type")
 	private String type;
@@ -51,8 +53,22 @@ public class BankAccount {
 		 public void setUser(EBankUsers user) {
 		  this.eBankUser = user;
 		 } */
+
+	 
+@OneToMany(mappedBy = "bankAC",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	List<UserTransactions> transactions= new ArrayList<>();
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	public void addTransaction(UserTransactions t1) {
+		transactions.add(t1);
+        t1.getBankAC().setAccount_No(this.account_No);
+        
+    }
+ 
+		
+
+
+
+	/*@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name = "Customer_Id")
 	private Customer customer;
 
@@ -62,15 +78,16 @@ public class BankAccount {
 	
 	public void setCustomer(Customer customer1) {
 		this.customer = customer1;
-	}
-
+	}*/
 
 	public BankAccount() {}
+	public BankAccount(long AC_No) {this.account_No=AC_No;}
+	
 	public BankAccount(long account_No, long customer_Id, String type, Date aC_Date, int balance, String mobile,
 			String email, String ifsc, String branch, String user_Id) {
 		super();
 		this.account_No = account_No;
-		//this.customer_Id = customer_Id;
+		this.customer_Id = customer_Id;
 		this.type = type;
 		AC_Date = aC_Date;
 		this.balance = balance;
@@ -193,9 +210,25 @@ public class BankAccount {
 
 
 
+	public long getCustomer_Id() {
+		return customer_Id;
+	}
+
+	public void setCustomer_Id(long customer_Id) {
+		this.customer_Id = customer_Id;
+	}
+
+	public List<UserTransactions> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<UserTransactions> transactions) {
+		this.transactions = transactions;
+	}
+
 	@Override
 	public String toString() {
-		return "BankAccount [account_No=" + account_No + ", customer_Id=" + customer.getCustomer_Id() + ", type=" + type
+		return "BankAccount [account_No=" + account_No + ", customer_Id=" + customer_Id + ", type=" + type
 				+ ", AC_Date=" + AC_Date + ", balance=" + balance + ", Mobile=" + Mobile + ", email=" + email
 				+ ", ifsc=" + ifsc + ", branch=" + branch + ", user_Id=" + user_Id + "]";
 	}
