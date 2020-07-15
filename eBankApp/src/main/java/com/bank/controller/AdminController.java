@@ -23,11 +23,12 @@ private ApplicationContext context;
 
 @PostMapping(value = "/login",consumes = "application/json")
 @ResponseBody
-public String  loginAdmin(@RequestBody Admin admin1) {
+@CrossOrigin(origins="http://localhost:4200")
+public ResponseEntity<String> loginAdmin(@RequestBody Admin admin1) {
 	System.out.println("inside admin rest controller"+admin1.toString());
 	
 	String msg=adminservice.authenticate(admin1);
-	return msg;
+	return new ResponseEntity<String>(msg, HttpStatus.CREATED);
 }
 
 @GetMapping("/home")

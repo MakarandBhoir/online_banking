@@ -22,11 +22,11 @@ public AdminDaoImpl(EntityManager manager) {
 
 public AdminDaoImpl() {
 	manager = JpaUtils.getEntityManager();
-		System.out.println(" ....manager created"); 
+		 
 }
 	@Override
 	public boolean authenticate(Admin admin1) {
-		System.out.println(" INSIDE DAO"+ admin1.getAdmin_Id());
+		
 		Admin adminFound=manager.find(Admin.class, admin1.getAdmin_Id());
 		boolean flag;
 		if(adminFound==null)

@@ -3,6 +3,8 @@ package com.bank.dao;
 
 
 import java.rmi.server.UID;
+import java.sql.Date;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -25,7 +27,7 @@ private EntityManager manager;
 
 public UserTransactionsDaoImpl() {
 	manager = JpaUtils.getEntityManager();
-		System.out.println(" ....manager created"); 
+		 
 }
 
 
@@ -70,9 +72,10 @@ public String updateTransaction(UserTransactions t1) {
 @Override
 public List<UserTransactions> getMiniStatement(long fromAC_No) {
 
-	//String hql="From UserTransactions t left outer join BankAccount b where b.account_No="+fromAC_No+" t.user_Id=b.user_Id";
-	String hql="From UserTransactions t where t.From_AC="+fromAC_No+" order by t.timestamp desc";
-	List<UserTransactions> statements=(List<UserTransactions>) manager.createQuery(hql).setFirstResult(0).setMaxResults(16).getResultList();
+	String hql="From UserTransactions t where t.bankAC.account_No="+fromAC_No+" order by t.timestamp desc";
+	
+	List<UserTransactions> statements=(List<UserTransactions>) manager.createQuery(hql).setFirstResult(0).setMaxResults(10).getResultList();
+	
 	
 	return statements;
 }

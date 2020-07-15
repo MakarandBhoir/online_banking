@@ -56,14 +56,22 @@ public class Customer {
 	@Column(name="Residential_Address")
 	private String residential_Address;
 	
+	@Column(name="Acc_Type")
+    private String acct_type;
+	
 	@Column(name="Apply_date")
 	private Date apply_Date;
 
 	public Customer() {}
 	
+	
+
+
+
 	public Customer(long customer_Id, String first_Name, String middle_Name, String last_Name, String father_Name,
 			Date dob, String email, String phone, String occupation_Type, String income_Source, long gross_Income,
-			String adhar_No, String pan_No, String permanant_Address, String residential_Address, Date apply_Date) {
+			String adhar_No, String pan_No, String permanant_Address, String residential_Address, String acct_type,
+			Date apply_Date) {
 		super();
 		this.customer_Id = customer_Id;
 		this.first_Name = first_Name;
@@ -80,8 +88,27 @@ public class Customer {
 		this.pan_No = pan_No;
 		this.permanant_Address = permanant_Address;
 		this.residential_Address = residential_Address;
+		this.acct_type = acct_type;
 		this.apply_Date = apply_Date;
 	}
+
+
+
+
+
+	public String getAcct_type() {
+		return acct_type;
+	}
+
+
+
+
+
+	public void setAcct_type(String acct_type) {
+		this.acct_type = acct_type;
+	}
+
+
 
 
 

@@ -29,6 +29,9 @@ public class AccountRequest {
 	@Column(name="DOB")
 	private Date dob;
 	
+	@Column(name="Acc_Type")
+    private String acct_type;
+	
 	@Column(name="Email")
 	private String email;
 	
@@ -69,10 +72,14 @@ public class AccountRequest {
 	public AccountRequest() {}	
 
 
+	
+
+
+
 	public AccountRequest(long application_Id, String first_Name, String middle_Name, String last_Name,
-			String father_Name, Date dob, String email, String phone, String occupation_Type, String income_Source,
-			int gross_Income, String adhar_No, String pan_No, String permanant_Address, String residential_Address,
-			Date apply_Date, String remark, String status) {
+			String father_Name, Date dob, String acct_type, String email, String phone, String occupation_Type,
+			String income_Source, int gross_Income, String adhar_No, String pan_No, String permanant_Address,
+			String residential_Address, Date apply_Date, String remark, String status) {
 		super();
 		this.application_Id = application_Id;
 		this.first_Name = first_Name;
@@ -80,6 +87,7 @@ public class AccountRequest {
 		this.last_Name = last_Name;
 		this.father_Name = father_Name;
 		this.dob = dob;
+		this.acct_type = acct_type;
 		this.email = email;
 		this.phone = phone;
 		this.occupation_Type = occupation_Type;
@@ -93,6 +101,27 @@ public class AccountRequest {
 		this.remark = remark;
 		this.status = status;
 	}
+
+
+
+
+
+
+	public String getAcct_type() {
+		return acct_type;
+	}
+
+
+
+
+
+
+	public void setAcct_type(String acct_type) {
+		this.acct_type = acct_type;
+	}
+
+
+
 
 
 

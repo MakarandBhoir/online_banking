@@ -23,14 +23,15 @@ public class UserTransactionsController {
 
 	@PostMapping(value = "/request/{t_Pin}/{myAC_No}", consumes = "application/json")
 	@ResponseBody
+	@CrossOrigin(origins="http://localhost:4200")
 	public String requestFundTransfer(@RequestBody UserTransactions t, @PathVariable("t_Pin") String t_Pin,@PathVariable("myAC_No")Long from_AC) {
 		
 		String msg = "";
-		System.out.println(from_AC);
+		
 		UserTransactions t1=userTransactionsservice.linkFrom_AC(t,from_AC);
 		
 		if (t_Pin.equalsIgnoreCase(userTransactionsservice.getUserT_Pin(t1.getUser_Id()))) {
-			System.out.println("pin matched!!");
+			
 			Boolean flag = userTransactionsservice.isSufficientBalance(t1);
 			if (flag ==true)
 				msg = userTransactionsservice.initiateNewTransaction(t1);
@@ -44,6 +45,7 @@ public class UserTransactionsController {
 
 	@PostMapping(value = "/updateStatus", consumes = "application/json")
 	@ResponseBody
+	@CrossOrigin(origins="http://localhost:4200")
 	public String updateTransactionStatus(@RequestBody UserTransactions t1) {
 		
 		String msg = "";
@@ -65,8 +67,9 @@ public class UserTransactionsController {
 	
 	@GetMapping(value = "/getStatement/{myAC_No}", produces = "application/json")
 	@ResponseBody
+	@CrossOrigin(origins="http://localhost:4200")
 	public List<UserTransactions> printRecentStatements(@PathVariable("myAC_No") Long fromAC_No) {
-		System.out.println("inside rest controller" + fromAC_No);
+		
  
 		List<UserTransactions> statement = userTransactionsservice.getMiniStatement(fromAC_No);
 		return statement;
