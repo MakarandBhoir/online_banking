@@ -1,0 +1,33 @@
+<div><app-menu></app-menu></div>
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="alert alert-info">
+ <H3><strong>PRIMO INTERNET BANKING</strong></H3> <br />
+ <div class="panel panel-primary">
+	<div class="panel-heading" align="center">
+		<h5 style="color:steelblue;">LIST OF ACCOUNT REQUESTS</h5>
+	</div>
+	<div class="panel-body" class="col-md-12">
+	  <table class="table table-striped">
+		<thead  >
+		  
+			<tr>
+			<th>Application ID</th>
+			<th>FIRST NAME</th>
+			<th>LAST NAME</th>
+			<th>ADHAR CARD</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr *ngFor="let req of accrequests | async">
+			<td>{{req.application_Id}}</td>
+			<td>{{req.first_Name}}</td>
+			<td>{{req.last_Name}}</td>
+			<td>{{req.adhar_No}}</td>
+			<td>
+				<button (click)="accountDetails(req.application_Id)" class="btn btn-info" style="margin-left: 10px"><i class="fas fa-folder-open"></i></button>
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+  </div>

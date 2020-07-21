@@ -1,0 +1,63 @@
+<div><app-menu></app-menu></div>
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="alert alert-info">
+ <H3><strong>PRIMO INTERNET BANKING</strong></H3> <br />
+        
+    </div>
+    <div class="card">
+        <h4 class="card-header">Register for availing the facility of online Banking provided by PRIMO</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input type="password" formControlName="confirmpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" />
+                    <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.confirmpassword.errors.required">Password is required</div>
+                        
+                    </div>
+                    <div class="alert alert-danger mt-3 mb-0"  *ngIf="loginForm.value.password !== loginForm.value.confirmpassword ">
+                        Passwords don't match.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="t_Pin">Set numeric 4 digit Transaction Pin</label>
+                    <input type="password" formControlName="t_Pin" maxlength="4" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.t_Pin.errors }" />
+                    <div *ngIf="submitted && f.t_Pin.errors" class="invalid-feedback">
+                        <div *ngIf="f.t_Pin.errors.required">Pin is required</div>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmt_Pin">Confirm Transaction Pin</label>
+                    <input type="password" maxlength="4" formControlName="confirmt_Pin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmt_Pin.errors }" />
+                    <div *ngIf="submitted && f.confirmt_Pin.errors" class="invalid-feedback">
+                        <div *ngIf="f.confirmt_Pin.errors.required">Pin is required</div>
+                        
+                    </div>
+                </div>
+              <!--  <div class="alert alert-danger mt-3 mb-0"  *ngIf="loginForm.value.t_Pin !== loginForm.value.confirmt_Pin ">
+                    Pin don't match.
+                </div>-->
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Register
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>            

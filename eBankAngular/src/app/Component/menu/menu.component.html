@@ -1,0 +1,25 @@
+<img src="./assets/Desktop/logo.png" height="40" width="150" sizes="2">
+  
+  
+    
+  
+ <ul class="nav nav-pills" style="height:2em ; background-color: lightblue; color: forestgreen; font-size: larger; font-weight: 400; flood-color: linen;" >
+   
+    
+    <li class="nav-item"      routerLink="/home" >
+      <div> Home     | </div>    </li>
+  
+    <li class="nav-item" routerLink="/check" *ngIf="this.loginStatus == '0' || this.userType == '0' "><div>|  Registraion   | </div></li>
+    <li class="nav-item" routerLink="/openAC" *ngIf="this.loginStatus === '0' && this.userType === '0' "><div>|  New Account   | </div></li>
+    <li class="nav-item" routerLink="/login" *ngIf="this.loginStatus === '0' && this.userType === '0'"><div>|  Login  | </div></li>
+    <li class="nav-item" routerLink="/ACrequest" *ngIf="this.loginStatus === '1' && this.userType === '1' "><div> |  Admin View  | </div></li>
+    <li class="nav-item" routerLink="/viewPayees" *ngIf="this.loginStatus === '1' && this.userType === '2'"><div>|  View Beneficiary  | </div></li>
+    <li class="nav-item" routerLink="/fund" *ngIf="this.loginStatus === '1' && this.userType === '2' "><div> |  Fund Transfer  | </div></li>
+    <li class="nav-item" routerLink="/cust" *ngIf="this.loginStatus === '1' && this.userType === '2'"><div>|  Customer Profile  | </div></li>
+    <li class="nav-item" routerLink="/acSummary" *ngIf="this.loginStatus === '1' && this.userType === '2'"><div>|  Account Summary  | </div></li>
+    <li class="nav-item" routerLink="/statement" *ngIf="this.loginStatus === '1' && this.userType === '2'"><div>|  Mini Statement  | </div></li>
+    
+    
+    <li class="nav-item"  (click)="onLogout();" *ngIf="this.loginStatus === '1' "><div> |  Logout  |</div></li>
+  </ul> 
+ 

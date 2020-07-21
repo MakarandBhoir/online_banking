@@ -1,0 +1,25 @@
+<div><app-menu></app-menu></div>
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="alert alert-info">
+ <H3><strong>PRIMO INTERNET BANKING</strong></H3> <br />
+        
+    </div>
+    <div class="card">
+        <h4 class="card-header">PLEASR ENTER YOUR CUSTOMER ID GIVEN BY PRIMO BANK</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="cust_Id">Customer Id</label>
+                    <input type="number" formControlName="cust_Id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cust_Id.errors }" />
+                    <div *ngIf="submitted && f.cust_Id.errors" class="invalid-feedback">
+                        <div *ngIf="f.cust_Id.errors.required">Id is required</div>
+                    </div>
+                </div>
+
+                <button type="submit"  class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Enter
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>

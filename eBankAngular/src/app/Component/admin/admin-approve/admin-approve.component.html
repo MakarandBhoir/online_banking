@@ -1,0 +1,110 @@
+<div><app-menu></app-menu></div>
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="alert alert-info">
+ <H3><strong>PRIMO INTERNET BANKING</strong></H3> <br />
+        
+    </div>
+    <div class="card">
+        <h4 class="card-header">Change Status with remark after Application verification and Submit</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="application_Id">Application No.</label>
+                    <input type="number" [(ngModel)]="accountreq.application_Id" formControlName="application_Id"  class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input readonly  type="text" value="{{accountreq.first_Name}}"  formControlName="first_Name"  class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="middleName">Middle Name</label>
+                    <input readonly type="text" value={{accountreq.middle_Name}} formControlName="middle_Name" class="form-control" />
+                                    </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input readonly  type="text"  value="{{accountreq.last_Name}}" formControlName="last_Name" class="form-control" />
+                    
+                </div>
+                <div class="form-group">
+                    <label for="fatherName">Father/Spouse Name</label>
+                    <input readonly  type="text" value="{{accountreq.father_Name}}" formControlName="father_Name" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input readonly type="text" value="{{accountreq.dob | date}}" formControlName="dob" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input readonly type="email" value="{{accountreq.email}}" formControlName="email" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone No</label>
+                    <input readonly type="number" value="{{accountreq.phone}}" formControlName="phone" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="occupation_Type">Type of Occupation</label>
+                    <input readonly type="text" value="{{accountreq.occupation_Type}}" formControlName="occupation_Type" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="income_Source">Source of Income</label>
+                    <input readonly type="text" value="{{accountreq.income_Source}}" formControlName="income_Source" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="gross_Income">Gross Annual Income</label>
+                    <input readonly type="number" value="{{accountreq.gross_Income}}" formControlName="gross_Income" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="adhar_No">ADHAR Card No.</label>
+                    <input readonly type="text" value="{{accountreq.adhar_No}}" formControlName="adhar_No" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="pan_No">PAN Card No.</label>
+                    <input readonly type="text" value="{{accountreq.pan_No}}" formControlName="pan_No" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="permanant_Address">Permanant Address</label>
+                    <input readonly type="text" value="{{accountreq.permanant_Address}}" formControlName="permanant_Address" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="residential_Address">Residential Address</label>
+                    <input readonly type="text" value="{{accountreq.residential_Address}}" formControlName="residential_Address" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="apply_Date">Date of Apply</label>
+                    <input readonly type="text" value="{{accountreq.apply_Date | date}}" formControlName="apply_Date" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="remark">Remark</label>
+                    <input type="text"  [(ngModel)]="accountreq.remark" formControlName="remark" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select name="status" id="status" [(ngModel)]="accountreq.status" class="form-control" formControlName="status" ngModel>
+                        <option value="Pending">Pending</option>
+                        <option value="Accept">Accept</option>
+                        <option value="Reject">Reject</option>
+                      </select>
+                   
+                </div>
+                
+                <button  class="btn btn-primary" type="submit">
+                                        Submit
+                </button>
+               
+            </form>
+        </div>
+    </div>
+</div>            

@@ -1,0 +1,67 @@
+<div><app-menu></app-menu></div>
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="alert alert-info">
+        <H3><strong>PRIMO INTERNET BANKING</strong></H3> <br />
+
+    </div>
+    <div class="card">
+
+        <h4 class="card-header">Money Transfer</h4>
+        <div class="card-body">
+            <form [formGroup]="transForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                    <label for="from_AC">From Account</label>
+                    <select formControlName="from_AC"  class="form-control">
+                       
+
+                        <option *ngFor="let AC of myACNo" value="{{AC}}">
+                            {{AC}}
+                        </option>
+
+                       
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="to_AC">To Account</label>
+                    <select formControlName="to_AC" class="form-control">
+                        <option *ngFor="let payeeAC of toACNo" value="{{payeeAC}}">
+                            {{payeeAC}}
+                        </option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount in Rupees</label>
+                    <input type="number" formControlName="amount" class="form-control" />
+
+                </div>
+
+                <div class="form-group">
+                    <label for="mode">Mode</label>
+                    <select formControlName="mode" class="form-control">
+                        <option class="form-control" value="NEFT">NEFT</option>
+                        <option class="form-control" value="RTGS">RTGS</option>
+                        <option class="form-control" value="IMPS">IMPS</option>
+
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label for="t_Pin">Please enter your secret transaction Pin</label>
+                    <input type="password" formControlName="t_Pin" maxlength="4" class="form-control" />
+
+                </div>
+
+
+
+                <button [disabled]="loading" type="submit" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Submit
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>

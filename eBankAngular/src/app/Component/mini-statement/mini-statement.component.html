@@ -1,0 +1,57 @@
+<div><app-menu></app-menu></div>
+<div class="col-md-8 offset-md-3 mt-8">
+    <div class="alert alert-info">
+ <H3><strong>PRIMO INTERNET BANKING</strong></H3> <br/><p>
+ <div class="panel panel-primary">
+	<div class="panel-heading" align="center">
+		<h5 style="color:steelblue;">LIST OF RECENT TRANSACTIONS</h5>
+	</div>
+<div>
+	<div class="card-body">
+		<form [formGroup] ="tForm"  >
+	<div><div class="form-group">
+	
+	<table><tr><td>	<label for="from_AC">Select your Account    </label></td>
+		
+		<td>
+			
+			<select formControlName="from_AC" (change)="reloadData()">
+				
+				<option *ngFor="let AC of myAC" value="{{AC}}">
+					{{AC}}
+				</option>
+			</select>
+			
+		</td><td>
+	<!--	<button (click)=reloadData() class="btn btn-info" style="margin-left: 10px"><i class="fa fa-print" aria-hidden="true"></i>
+		</button>--></td></tr></table>
+	</div></div></form></div>
+
+	<div class="panel-body" class="col-md-12">
+	  <table class="table table-striped">
+		<thead  >
+		  
+			<tr>
+			<th>REFERENCE ID</th>
+			<th>RECEIPIENT'S AC NO</th>
+			<th>MODE</th>
+			<th>AMOUNT</th>
+			<th>TIMESTAMP</th>
+			<th>STATUS</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr *ngFor="let t1 of transactions | async">
+			<td>{{t1.reference_Id}}</td>
+			<td>{{t1.to_AC}}</td>
+			<td>{{t1.mode}}</td>
+			<td>{{t1.amount}}</td>
+			<td>
+				{{t1.timestamp}}
+			</td>
+			<td>{{t1.status}}</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+  </div></div></div></div>

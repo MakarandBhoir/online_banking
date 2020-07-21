@@ -1,0 +1,31 @@
+<div><app-menu></app-menu></div>
+<div class="col-md-6 offset-md-3 mt-5">
+	<div class="alert alert-info">
+		<H3><strong>WELCOME TO PRIMO INTERNET BANKING</strong></H3> <br />
+		<div class="panel panel-primary">
+			<div class="panel-heading" align="center">
+				<h5 style="color:steelblue;">CUSTOMER PROFILE</h5>
+			</div>
+			<div class="panel-body" class="col-md-12">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+ 
+                            <th>FIRST NAME</th>
+                            <th>LAST NAME</th>
+                            <th>Email ID</th>
+                            <th>Mobile No</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+ 
+                        <td>{{cust.first_Name}}</td>
+                        <td>{{cust.last_Name}}</td>
+                        <td>{{cust.email}}</td>
+                        <td>{{cust.phone}}</td>
+                        <td>{{cust.permanant_Address}}</td>
+                    </tbody>
+				</table>
+			</div>
+		</div>

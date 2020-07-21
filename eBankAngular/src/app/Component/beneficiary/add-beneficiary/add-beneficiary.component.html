@@ -1,0 +1,44 @@
+<div><app-menu></app-menu></div>
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="alert alert-info">
+ <H3><strong>PRIMO INTERNET BANKING</strong></H3> <br />
+        
+    </div>
+    <div class="card">
+        <h4 class="card-header">Input Beneficiary Details</h4>
+        
+        <div class="card-body">
+            <div [hidden]="submitted" style="width: 900px;">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+             
+                <div class="form-group">
+                    <label for="payeeACno">Beneficiary Account No</label>
+                    <input type="text"  [(ngModel)]="payee.payeeACno" value={{payee.payeeACno}} formControlName="payeeACno" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="bankName">Bank Name</label>
+                    <input type="text" [(ngModel)]="payee.bankName" value={{payee.bankName}} formControlName="bankName" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="ifsc">IFSC CODE</label>
+                    <input type="text" [(ngModel)]="payee.ifsc" value={{payee.ifsc}} formControlName="ifsc" class="form-control" />
+                   
+                </div>
+                <div class="form-group">
+                    <label for="nickName">Nick Name</label>
+                    <input type="text" [(ngModel)]="payee.nickName" value={{payee.nickName}} formControlName="nickName" class="form-control" />
+                   
+                </div>
+                
+                
+                
+                <button  class="btn btn-primary" type="submit">
+                                        Save
+                </button>
+               
+            </form>
+        </div>
+    </div>
+</div>            
