@@ -1,0 +1,107 @@
+Create Database ebank_db;
+
+CREATE TABLE `ebank_db`.`admin` (
+ `Admin_Id` VARCHAR(15) NOT NULL , 
+`Password` VARCHAR(10) NOT NULL , 
+PRIMARY KEY (`Admin_Id`, `Password`)) ENGINE = InnoDB;
+
+CREATE TABLE `ebank_db`.`account_request` (
+ `Application_Id` INT(35) NOT NULL AUTO_INCREMENT , 
+`First_Name` VARCHAR(20), 
+`Middle_Name` VARCHAR(20),
+ `Last_name` VARCHAR(20) ,
+ `Father_Name` VARCHAR(40) ,
+ `DOB` DATE , 
+`Email` VARCHAR(30)  , 
+`Phone` VARCHAR(15) ,
+ `Occupation_Type` VARCHAR(25), 
+`Income_Source` VARCHAR(20),
+`Acc_Type` VARCHAR(10),
+ `Gross_Income` INT(10) , 
+`Status` VARCHAR(15) DEFAULT 'Pending' ,
+ `Remark` VARCHAR(45) ,
+ `Adhar_Card` VARCHAR(15) ,
+ `Pan_Card` VARCHAR(10) ,
+ `Permanant_Address` VARCHAR(60),
+ `Residential_Address` VARCHAR(60) ,
+ `Apply_Date` DATETIME DEFAULT CURRENT_TIMESTAMP ,
+ PRIMARY KEY (`Application_Id`)) ENGINE = InnoDB;
+
+create sequence AppId_seq start with 00000001
+
+
+CREATE TABLE `ebank_db`.`customer_details` ( 
+`Customer_Id` INT(20) NOT NULL AUTO_INCREMENT , 
+`First_Name` VARCHAR(20), 
+`Middle_Name` VARCHAR(20),
+ `Last_name` VARCHAR(20) ,
+ `Father_Name` VARCHAR(40) ,
+ `DOB` DATE , 
+`Email` VARCHAR(30)  , 
+`Phone` VARCHAR(15) ,
+ `Occupation_Type` VARCHAR(25), 
+`Income_Source` VARCHAR(20),
+ `Gross_Income` INT(10) , 
+ `Adhar_Card` VARCHAR(15) ,
+ `Pan_Card` VARCHAR(10) ,
+ `Permanant_Address` VARCHAR(60),
+ `Residential_Address` VARCHAR(60) ,
+ `Apply_Date` DATETIME DEFAULT CURRENT_TIMESTAMP ,
+ PRIMARY KEY (`Customer_Id`)) ENGINE = InnoDB;
+
+create sequence CustId_seq start with 121211
+
+CREATE TABLE `ebank_db`.`ebankusers` ( 
+`User_Id` VARCHAR(30) NOT NULL ,
+`Password` VARCHAR(12) NOT NULL , 
+`Transaction_Pin` VARCHAR(6) NOT NULL , 
+PRIMARY KEY (`User_id`),
+UNIQUE (`Password`)) ENGINE = InnoDB;
+
+CREATE TABLE `ebank_db`.`bank_account` (
+`Account_No` INT(25) NOT NULL ,
+`Customer_Id` INT(20) ,
+`Type` VARCHAR (10),
+`Ac_Creation_Date` DATE,
+`Balance` INT(15) ,
+`Registered_Mobile` VARCHAR(15) , 
+`Registered_Email` VARCHAR(40) , 
+`IFSC` VARCHAR(20) , 
+`Branch` VARCHAR(25), 
+`User_Id` VARCHAR (30) DEFAULT NULL ,
+ PRIMARY KEY (`Account_No`),
+ FOREIGN KEY(Customer_Id)REFERENCES customer_details(Customer_Id), 
+FOREIGN KEY(User_Id)REFERENCES ebankusers(User_Id)) ENGINE = InnoDB;
+
+create sequence Account_seq start with 78611111000000001
+
+CREATE TABLE `ebank_db`.`beneficiary` (
+`B_Id` INT(20) NOT NULL AUTO_INCREMENT ,
+`User_Id` VARCHAR(30) ,
+`PayeeAC_No` INT(30), 
+`Bank_Name` VARCHAR(30), 
+`IFSC` VARCHAR(20) , 
+`Nick_Name` VARCHAR(20),
+PRIMARY KEY(B_Id),
+FOREIGN KEY (User_Id) REFERENCES ebankusers(User_Id)) ENGINE = InnoDB;
+
+create sequence bene_seq
+
+CREATE TABLE `ebank_db`.`usertransactions` (
+`Transaction_Id` INT(25) NOT NULL , 
+`From_AC` INT, `To_AC` INT , 
+`Timestamp` TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP(6) , 
+`Amount` INT , 
+`Mode` VARCHAR(10)  , 
+`Remark` VARCHAR(45)  , 
+`Status` VARCHAR(30) default 'Pending', 
+`User_id` VARCHAR(30)  ,
+`Reference_Id` Varchar(25), 
+PRIMARY KEY (`Transaction_Id`),
+FOREIGN KEY (User_Id) REFERENCES ebankusers(User_Id)) ENGINE = InnoDB; 
+
+create sequence TransId_seq start with 1010001
+
+
+
+INSERT INTO `ebankusers` (`User_Id`, `Password`, `Transaction_Pin`) VALUES ('abc', '123', '1111');
