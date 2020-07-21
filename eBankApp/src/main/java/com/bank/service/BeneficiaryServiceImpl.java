@@ -43,9 +43,9 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 	}
 
 	@Override
-	public String removeBeneficiary(long payeeACno,String user_Id) {
+	public String removeBeneficiary(int b_Id) {
 		String msg="";
-		Boolean flag=beneficiarydao.removeBeneficiaryById(payeeACno,user_Id);
+		Boolean flag=beneficiarydao.removeBeneficiaryById(b_Id);
 		if(flag==true)
 			msg="Beneficiary removed!";
 			else

@@ -19,14 +19,8 @@ public class EBankUsersServiceImpl implements EBankUsersService{
 	@Override
 	public String authenticateUser(EBankUsers user1) {
 		String msg="";
-		boolean success=userdao.authenticateUser(user1);
-		if(success==true)
-		{ 
-						msg="Login Successful!";
-		}
-		else {
-			msg="Login Failed!";
-		}
+		msg=userdao.authenticateUser(user1);
+		
 		return msg;
 	}
 

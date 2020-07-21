@@ -19,6 +19,9 @@ public class EBankUsers {
 	@Column(name="Transaction_Pin")
 	private String t_Pin;
 	
+	@Column(name="cust_Id")
+	private int cust_Id;
+	
 	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@JoinColumn(name = "User_Id",referencedColumnName = "User_Id")
 	//@JsonManagedReference
@@ -54,6 +57,12 @@ public class EBankUsers {
 	
 
 
+	public int getCust_Id() {
+		return cust_Id;
+	}
+	public void setCust_Id(int cust_Id) {
+		this.cust_Id = cust_Id;
+	}
 	public String getUser_Id() {
 		return user_Id;
 	}

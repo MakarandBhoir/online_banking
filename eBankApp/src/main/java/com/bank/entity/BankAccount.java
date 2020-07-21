@@ -12,7 +12,7 @@ public class BankAccount {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="Account_seq")
-	@SequenceGenerator(name="Account_seq",sequenceName="Account_seq",allocationSize=1)
+	@SequenceGenerator(name="Account_seq",sequenceName="Account_seq",allocationSize=1,initialValue = 310000001)
 	@Column(name="Account_No")
 	private long account_No;
 	
@@ -44,8 +44,9 @@ public class BankAccount {
 	@Column(name="User_Id")
 	private String user_Id;
 	
-	/*@OneToOne(mappedBy = "bankAccounts", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	EBankUsers eBankUser;
+	/*@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name = "User_Id", nullable = false)
+ 	EBankUsers eBankUser;
 	public EBankUsers geteBankUser() {
 		  return eBankUser;
 		 }
@@ -80,6 +81,22 @@ public class BankAccount {
 		this.customer = customer1;
 	}*/
 
+	public String getUser_Id() {
+		return user_Id;
+	}
+
+
+
+
+
+	public void setUser_Id(String user_Id) {
+		this.user_Id = user_Id;
+	}
+
+
+
+
+
 	public BankAccount() {}
 	public BankAccount(long AC_No) {this.account_No=AC_No;}
 	
@@ -95,7 +112,7 @@ public class BankAccount {
 		this.email = email;
 		this.ifsc = ifsc;
 		this.branch = branch;
-		this.user_Id = user_Id;
+		//this.user_Id = user_Id;
 	}
 
 
@@ -198,15 +215,13 @@ public class BankAccount {
 
 
 
-	public String getUser_Id() {
-		return user_Id;
-	}
-
-
-
-	public void setUser_Id(String user_Id) {
-		this.user_Id = user_Id;
-	}
+	/*
+	 * public String getUser_Id() { return user_Id; }
+	 * 
+	 * 
+	 * 
+	 * public void setUser_Id(String user_Id) { this.user_Id = user_Id; }
+	 */
 
 
 
@@ -230,7 +245,7 @@ public class BankAccount {
 	public String toString() {
 		return "BankAccount [account_No=" + account_No + ", customer_Id=" + customer_Id + ", type=" + type
 				+ ", AC_Date=" + AC_Date + ", balance=" + balance + ", Mobile=" + Mobile + ", email=" + email
-				+ ", ifsc=" + ifsc + ", branch=" + branch + ", user_Id=" + user_Id + "]";
+				+ ", ifsc=" + ifsc + ", branch=" + branch + ", user_Id=" + user_Id+ "]";
 	}
 	
 	

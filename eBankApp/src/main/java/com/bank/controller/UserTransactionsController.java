@@ -29,6 +29,7 @@ public class UserTransactionsController {
 		String msg = "";
 		
 		UserTransactions t1=userTransactionsservice.linkFrom_AC(t,from_AC);
+		t1.getBankAC().setAccount_No(from_AC);
 		
 		if (t_Pin.equalsIgnoreCase(userTransactionsservice.getUserT_Pin(t1.getUser_Id()))) {
 			
@@ -40,7 +41,9 @@ public class UserTransactionsController {
 		} else {
 			msg = "Invalid Transaction Pin!";
 		}
-		return msg;
+		t1.setStatus("Success");
+		t1.setRemark("Valid Transaction");
+		return msg = userTransactionsservice.completeTransaction(t1);
 	}
 
 	@PostMapping(value = "/updateStatus", consumes = "application/json")

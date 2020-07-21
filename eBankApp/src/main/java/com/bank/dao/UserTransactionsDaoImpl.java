@@ -3,7 +3,7 @@ package com.bank.dao;
 
 
 import java.rmi.server.UID;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Comparator;
 import java.util.List;
 
@@ -36,6 +36,10 @@ public String initiateNewTransaction(UserTransactions t1) {
 	
 	System.out.println(t1);
 	manager.getTransaction().begin();
+	
+	Date dt=new Date();
+  
+	t1.setTimestamp(dt);
 	manager.persist(t1);
 	manager.getTransaction().commit();
 	return "Transaction is in progress...";
@@ -45,6 +49,7 @@ public String initiateNewTransaction(UserTransactions t1) {
 @Override
 public String updateTransaction(UserTransactions t1) {
 	String msg="";
+	BankAccount b=manager.find(BankAccount.class,t1.getFrom_AC());
 	UserTransactions t2=manager.find(UserTransactions.class,t1.getTransaction_Id());
 	String status=t1.getStatus();
 	if(status.equals("Fail"))
@@ -57,11 +62,15 @@ public String updateTransaction(UserTransactions t1) {
 		int newBalance = bal-amt;
 		t2.getBankAC().setBalance(newBalance);
 		
+		b.setBalance(newBalance);
+		
+		
 		msg="Reference_Id : "+t1.getReference_Id()+"\nTransaction Successful!";
 	}
 	
 	t2.setStatus(t1.getStatus());
 	manager.getTransaction().begin();
+	manager.persist(b);
 	manager.persist(t2);
 	manager.getTransaction().commit();
 	return msg;

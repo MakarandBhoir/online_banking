@@ -26,14 +26,14 @@ private BeneficiaryService beneficiaryservice;
 private ApplicationContext context;
 
 
-@GetMapping(value="getbyUID/{user_Id}",produces="application/json")
+@GetMapping(value="/getbyUID/{user_Id}",produces="application/json")
 @ResponseBody
 @CrossOrigin(origins="http://localhost:4200")
 public List<Beneficiary> getBeneficiaryListByUser_Id(@PathVariable("user_Id") String user_Id) {
 	return beneficiaryservice.getBeneficiaryByUserId(user_Id);
 }
 
-@GetMapping(value="getbyBID/{b_Id}",produces="application/json")
+@GetMapping(value="/getbyBID/{b_Id}",produces="application/json")
 @ResponseBody
 //@CrossOrigin(origins="http://localhost:4200")
 public Beneficiary getBeneficiaryListByB_Id(@PathVariable("b_Id") int b_Id) {
@@ -62,6 +62,7 @@ String editBeneficiary(@RequestBody Beneficiary beneficiary1) {
 	
 }
 
+/*
 @GetMapping(path="/remove/{payeeACno}/{user_Id}")
 @ResponseBody
 //@CrossOrigin(origins="http://localhost:4200")
@@ -69,6 +70,16 @@ String deleteBeneficiary(@PathVariable("payeeACno")Long payeeACno,@PathVariable(
 	System.out.println("Delete ..");
 	
 	return beneficiaryservice.removeBeneficiary(payeeACno,user_Id);
+	
+}*/
+
+@DeleteMapping(path="/remove/{b_Id}")
+@ResponseBody
+//@CrossOrigin(origins="http://localhost:4200")
+String deleteBeneficiary(@PathVariable("b_Id") int b_Id) {
+	System.out.println("Delete ..");
+	
+	return beneficiaryservice.removeBeneficiary(b_Id);
 	
 }
 

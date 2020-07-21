@@ -27,15 +27,21 @@ public class BeneficiaryDaoImpl implements BeneficiaryDao {
 	@Override
 	public String addBeneficiary(Beneficiary ben1) {
 
-		boolean ben_Id = false;
+	boolean ben_Id = false;
 		String msg = "";
 		Query query = manager.createQuery("select b.b_Id FROM Beneficiary b WHERE b.payeeACno=" + ben1.getPayeeACno()
 				+ " AND b.user_Id='" + ben1.getUser_Id() + "'");
 		ben_Id = query.getResultList().isEmpty();
-
-		if (ben_Id == true) {
+System.out.println("B E N I D "+ben_Id);
+		if (ben_Id) {
 			manager.getTransaction().begin();
-			manager.persist(ben1);
+			Beneficiary b=new Beneficiary();
+			b.setBankName(ben1.getBankName());
+			b.setIfsc(ben1.getIfsc());
+			b.setNickName(ben1.getNickName());
+			b.setUser_Id(ben1.getUser_Id());
+			b.setPayeeACno(ben1.getPayeeACno());
+			manager.persist(b);
 			manager.getTransaction().commit();
 			msg = "Beneficiary added successfully!";
 		} else {
@@ -69,10 +75,10 @@ public class BeneficiaryDaoImpl implements BeneficiaryDao {
 	}
 
 	@Override
-	public Boolean removeBeneficiaryById(long payeeACno, String user_Id) {
-		int b_Id;
+	public Boolean removeBeneficiaryById(int b_Id) {
+		//int b_Id;
 		Boolean flag;
-
+/*
 		Query query = manager.createQuery("SELECT  b.b_Id FROM Beneficiary b WHERE b.payeeACno=" + payeeACno
 				+ "  AND b.user_Id='" + user_Id + "'");
 
@@ -80,14 +86,14 @@ public class BeneficiaryDaoImpl implements BeneficiaryDao {
 
 		if (b_Id == 0) {
 			flag = false;
-		} else {
+		} else {*/
 			Beneficiary Payee = manager.find(Beneficiary.class, b_Id);
 
 			manager.getTransaction().begin();
 			manager.remove(Payee);
 			manager.getTransaction().commit();
 			flag = true;
-		}
+	
 		return flag;
 
 	}

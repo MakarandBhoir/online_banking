@@ -1,5 +1,6 @@
 package com.bank.dao;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -23,6 +24,8 @@ public class AccountRequestDaoImpl implements AccountRequestDao {
 
 	@Override
 	public Long addAccountRequest(AccountRequest accntreq) {
+		Date dt=new Date();
+        accntreq.setApply_Date(dt);
 		manager.persist(accntreq);
 	      Long result= accntreq.getApplication_Id();
 	      return result;

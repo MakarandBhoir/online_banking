@@ -220,9 +220,15 @@ public class UserTransactions {
 		this.user_Id = user_Id;
 	}
 
+	
 	//public void setFrom_AC(long from_AC) {
 		//this.from_AC = from_AC;
 	//}
+
+
+	public void setFrom_AC(long from_AC) {
+		this.from_AC = from_AC;
+	}
 
 
 	@Override

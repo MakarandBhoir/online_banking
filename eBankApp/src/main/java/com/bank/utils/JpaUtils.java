@@ -15,13 +15,13 @@ public class JpaUtils {
     private static EntityManager entityManager;
 
     public static EntityManager getEntityManager() {
-    	System.out.println("HI HI ..........");
+    	
         
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-            System.out.println("Factory created...........");
+            
         
         	entityManager = factory.createEntityManager();
-            System.out.println("EM created...........");
+           
 
         
         

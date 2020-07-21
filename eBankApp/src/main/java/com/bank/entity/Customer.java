@@ -1,8 +1,11 @@
 package com.bank.entity;
 
 import java.util.Date;
-
+import java.util.Set;
+import com.bank.entity.BankAccount;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name ="customer_details")
@@ -10,7 +13,7 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CustId_seq")
-	@SequenceGenerator(name="CustId_seq",sequenceName="CustId_seq",allocationSize=1)
+	@SequenceGenerator(name="CustId_seq",sequenceName="CustId_seq",allocationSize=1,initialValue = 10001)
 	@Column(name="Customer_Id")
 	private long customer_Id;
 	
@@ -61,6 +64,8 @@ public class Customer {
 	
 	@Column(name="Apply_date")
 	private Date apply_Date;
+	
+	
 
 	public Customer() {}
 	
@@ -93,9 +98,9 @@ public class Customer {
 	}
 
 
-
-
-
+	
+		 
+		 
 	public String getAcct_type() {
 		return acct_type;
 	}
