@@ -105,3 +105,5 @@ create sequence TransId_seq start with 1010001
 
 
 INSERT INTO `ebankusers` (`User_Id`, `Password`, `Transaction_Pin`) VALUES ('abc', '123', '1111');
+
+INSERT INTO `admin` (`Admin_Id`, `Password`) VALUES ('admin', '123');
